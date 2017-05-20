@@ -1,0 +1,68 @@
+<html>
+<head>
+<script type="text/javascript" src="calc.js"></script>  
+  </head>
+<body>
+<div align="center">
+<form name="Calculator">
+ <table border="4">  
+  <tr>   
+    <td colspan="2">
+      <input type="text" maxlength="40" size="30" name="Display">
+    </td>
+  </tr>   
+  <tr>
+    <td> 
+      <table>
+       <tr>
+         <td><input type="button" value="7" onClick="AddDigit('7')"></td>
+         <td><input type="button" value="8" onClick="AddDigit('8')"></td>
+         <td><input type="button" value="9" onClick="AddDigit('9')"></td>
+       </tr>
+       <tr>
+         
+          <td><input type="button" value="4" onClick="AddDigit('4')"></td>
+         <td><input type="button" value="5" onClick="AddDigit('5')"></td>
+         <td><input type="button" value="6" onClick="AddDigit('6')"onClick="AddDigit('7')"></td>
+                </tr>
+       <tr>
+         
+          <td><input type="button" value="1" onClick="AddDigit('1')"></td>
+         <td><input type="button" value="2" onClick="AddDigit('2')"></td>
+         <td><input type="button" value="3" onClick="AddDigit('3')"></td>
+         
+       </tr>
+       <tr>
+         
+          <td><input type="button" value="+/-" onClick="PlusMinus()"></td>
+         <td><input type="button" value="0" onClick="AddDigit('0')"></td>
+         <td><input type="button" value="." onClick="Dot()"></td>
+        
+       </tr>
+      </table>
+    </td>
+    <td> 
+      <table>
+         <tr>
+         <td><input type="button" value="C" onClick="Clear()"></td>
+         <td><input type="button" value="AC" onClick="AllClear()"></td>
+         </tr>
+         <tr>
+         <td><input type="button" value="*" onClick="Operate('*')"></td>
+         <td><input type="button" value="/" onClick="Operate('/')"</td>
+         </tr>
+         <tr>
+         <td><input type="button" value="+"  onClick="Operate('+')"></td>
+         <td><input type="button" value="-"  onClick="Operate('-')"></td>
+         </tr>
+         <tr>
+         <td><input type="button" value="=" onClick="Calculate()"></td>
+         
+         </tr>
+      </table>
+    </td>
+  </tr></table>
+</form>
+</div>
+</body>
+</html>
