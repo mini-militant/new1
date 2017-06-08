@@ -1,0 +1,109 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<style>
+		html,body{
+			font-family: Arial, sans-serif;
+			height: 100%;
+			margin:0;
+			padding: 0;
+		}
+	#map{
+		height: 100%;
+	}	
+	</style>
+</head>
+<body>
+   <div id="map"></div>
+
+   <script async defer type="text/javascript"
+   src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBVVugGvxJo-Aw9woVf_7WzYpUbqk0EBZw&v=3&callback=initMap"></script>
+   <script>
+   var markers=[];
+   		var map;
+         
+   		function initMap(){
+   			map=new google.maps.Map(document.getElementById('map'),{
+   				center:{lat:40.7413549,lng: -73.9980244},
+   				zoom:13
+   			});
+             
+               }
+         
+   			/*var tribeca={lat: 25.565110, lng: 83.977707};
+   			var marker=new google.maps.Marker({
+   				position:tribeca,
+   				map: map,
+   				title: 'First MArker!'
+   			});
+         //marker.setMap(map) --sets the marker as specified on a position and if null is passed the marker is removed from the screen
+
+         var infowindow=new google.maps.InfoWindow({
+         	content: 'Do you ever feel like an infowindow floating through the wind,' + 'ready to start again?'
+         });
+         marker.addListener('click',function(){
+         	infowindow.open(map, marker)
+         });*/
+
+
+         //--use databases for a collection of data.--
+         var locations= [
+         {title: 'Park Avenue Penthouse', location: {lat:40.7713024, lng: -73.96323933}},
+         {title: 'Chelsea Loft', location: {lat:40.7444883, lng: -73.9949465}},
+         {title: 'Unique Square Open Floor Plan', location: {lat:40.7347062, lng: -73.9895759}},
+         ];
+         
+         var largeInfoWindow=new google.maps.InfoWindow(), marker, i;
+   
+         var bounds = new google.maps.LatLngBounds();
+
+
+          for(var i=0;i<locations.length;i++){
+            //get position from array
+            var position=locations[i].location;
+            var title=locations[i].title;
+            //create marker per location and put into marker arrays
+            var marker=new google.maps.Marker({
+               map:map,
+               position: position,
+               title: title,
+               animation: google.maps.Animation.DROP,
+               id: i
+            });
+            markers.push(marker);
+            //Create an onClick event to open an infoWindow at each marker
+            bounds.extend(marker.position);
+            marker.addListener('click',function(){
+               populateInfoWindow(this, largeInfoWindow);
+            });
+         }
+
+            
+         
+
+         function populateInfoWindow(marker, infowindow){
+            //check to see if window is not opened on this marker
+
+            if(infowindow.marker !=marker){
+               infowindow.marker= marker;
+               infowindow.setContent('<div>' + marker.title + '</div>');
+               infoWindow.open(map, marker);
+
+               //make sure tht marker proprty is cleared if infowindow is closed.
+               infowindow.addListener('closeclick', function(){
+                  infowindow.setMarker(null);
+               });
+            }
+            map.fitBounds(bounds);
+         }
+   
+   	
+
+   </script>
+
+
+
+
+</body>
+</html>
